@@ -1,211 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorPrimaryLight"
-    tools:context="com.appbusters.robinkamboj.intensitycheck.MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="1"
-        android:background="#000000"/>
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryLight">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="6">
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="100sp"
+            app:cardCornerRadius="5sp"
+            android:layout_margin="5sp"
+            app:cardElevation="3sp"
+            android:id="@+id/color"
+            app:cardBackgroundColor="@color/colorIntensity1">
 
-            <com.github.yongjhih.mismeter.MisMeter
-                android:layout_width="wrap_content"
+        </android.support.v7.widget.CardView>
+
+        <com.github.yongjhih.mismeter.MisMeter
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/color"
+            android:id="@+id/percentage_meter"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="25sp"
+            android:text="Current Reading:"
+            android:layout_below="@id/color"
+            android:paddingTop="5sp"
+            android:textColor="@color/colorIntensity4"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:id="@+id/one"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Value"
+            android:paddingBottom="5sp"
+            android:textColor="@color/colorIntensity1"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/one"
+            android:id="@+id/current"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Maximum Reading:"
+            android:paddingTop="5sp"
+            android:textColor="@color/colorIntensity4"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/current"
+            android:id="@+id/two"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Value"
+            android:paddingBottom="5sp"
+            android:textColor="@color/colorIntensity1"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/two"
+            android:id="@+id/maximum"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Percentage:"
+            android:paddingTop="5sp"
+            android:textColor="@color/colorIntensity4"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/maximum"
+            android:id="@+id/three"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Value"
+            android:paddingBottom="5sp"
+            android:textColor="@color/colorIntensity1"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/three"
+            android:id="@+id/percentage"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Status:"
+            android:paddingTop="5sp"
+            android:textColor="@color/colorIntensity4"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/percentage"
+            android:id="@+id/four"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Same/Different"
+            android:paddingBottom="5sp"
+            android:textColor="@color/colorIntensity1"
+            android:layout_toEndOf="@+id/percentage_meter"
+            android:layout_below="@+id/four"
+            android:id="@+id/status"
+            android:fontFamily="sans-serif-smallcaps"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/ll"
+            android:layout_below="@id/percentage_meter">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:id="@+id/percentage_meter"/>
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:layout_margin="2sp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorRed"
+                        android:id="@+id/red"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enabled/Disabled"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:layout_gravity="bottom"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorIntensity1"
+                        android:padding="4sp"
+                        android:textStyle="bold"/>
+
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:layout_margin="2sp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorYellow"
+                        android:id="@+id/yellow"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enabled/Disabled"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:layout_gravity="bottom"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorIntensity1"
+                        android:padding="4sp"
+                        android:textStyle="bold"/>
+
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:layout_margin="2sp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorGreen"
+                        android:id="@+id/green"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Enabled/Disabled"
+                        android:fontFamily="sans-serif-smallcaps"
+                        android:layout_gravity="bottom"
+                        android:textSize="15sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorIntensity1"
+                        android:padding="4sp"
+                        android:textStyle="bold"/>
+
+                </FrameLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/ll">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:layout_marginTop="25sp"
-                android:text="Current Reading:"
-                android:paddingTop="5sp"
-                android:textColor="@color/colorIntensity4"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:id="@+id/one"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Value"
-                android:paddingBottom="5sp"
-                android:textColor="@color/colorIntensity1"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:layout_below="@+id/one"
-                android:id="@+id/current"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Maximum Reading:"
-                android:paddingTop="5sp"
-                android:textColor="@color/colorIntensity4"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:layout_below="@+id/current"
-                android:id="@+id/two"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Value"
-                android:paddingBottom="5sp"
-                android:textColor="@color/colorIntensity1"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:layout_below="@+id/two"
-                android:id="@+id/maximum"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="Maximum Reading:"
-                android:paddingTop="5sp"
-                android:textColor="@color/colorIntensity4"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:layout_below="@+id/maximum"
-                android:id="@+id/three"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Value"
-                android:paddingBottom="5sp"
-                android:textColor="@color/colorIntensity1"
-                android:layout_toEndOf="@+id/percentage_meter"
-                android:layout_below="@+id/three"
-                android:id="@+id/percentage"
-                android:fontFamily="sans-serif-smallcaps"/>
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_below="@id/percentage_meter">
+                android:text="0-10 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity1"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="0sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11-20 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity2"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100sp"
-                        android:layout_margin="2sp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="21-30 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity3"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimaryDark"
-                            android:id="@+id/red"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="31-40 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity4"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Enabled/Disabled"
-                            android:fontFamily="sans-serif-smallcaps"
-                            android:layout_gravity="bottom"
-                            android:textSize="15sp"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorIntensity1"
-                            android:padding="4sp"
-                            android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="41-50 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity5"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                    </FrameLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="51-60 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity6"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="61-70 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity7"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="0sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="71-80 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity8"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100sp"
-                        android:layout_margin="2sp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="81-90 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity9"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimaryDark"
-                            android:id="@+id/red"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="91-100 %"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:background="@color/colorIntensity10"
+                android:textColor="@color/colorWhiteShade"
+                android:layout_margin="4sp"
+                android:padding="8sp"
+                android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Enabled/Disabled"
-                            android:fontFamily="sans-serif-smallcaps"
-                            android:layout_gravity="bottom"
-                            android:textSize="15sp"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorIntensity1"
-                            android:padding="4sp"
-                            android:textStyle="bold"/>
+        </LinearLayout>
 
-                    </FrameLayout>
+    </RelativeLayout>
 
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="0sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="100sp"
-                        android:layout_margin="2sp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimaryDark"
-                            android:id="@+id/red"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Enabled/Disabled"
-                            android:fontFamily="sans-serif-smallcaps"
-                            android:layout_gravity="bottom"
-                            android:textSize="15sp"
-                            android:textAlignment="center"
-                            android:textColor="@color/colorIntensity1"
-                            android:padding="4sp"
-                            android:textStyle="bold"/>
-
-                    </FrameLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+</ScrollView>
