@@ -1,18 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryLight"
     tools:context="com.appbusters.robinkamboj.intensitycheck.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#000000"/>
 
-</android.support.constraint.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="6">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.github.yongjhih.mismeter.MisMeter
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/percentage_meter"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Current Reading:"
+                android:padding="5sp"
+                android:textColor="@color/colorIntensity1"
+                android:layout_toEndOf="@+id/percentage_meter"
+                android:id="@+id/one"
+                android:fontFamily="sans-serif-smallcaps"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Values"
+                android:padding="5sp"
+                android:textColor="@color/colorIntensity1"
+                android:layout_toEndOf="@+id/percentage_meter"
+                android:layout_below="@+id/one"
+                android:id="@+id/current"
+                android:fontFamily="sans-serif-smallcaps"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Maximum Reading:"
+                android:padding="5sp"
+                android:textColor="@color/colorIntensity1"
+                android:layout_toEndOf="@+id/percentage_meter"
+                android:layout_below="@+id/current"
+                android:id="@+id/two"
+                android:fontFamily="sans-serif-smallcaps"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Value"
+                android:padding="5sp"
+                android:textColor="@color/colorIntensity1"
+                android:layout_toEndOf="@+id/percentage_meter"
+                android:layout_below="@+id/two"
+                android:id="@+id/maximum"
+                android:fontFamily="sans-serif-smallcaps"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>
