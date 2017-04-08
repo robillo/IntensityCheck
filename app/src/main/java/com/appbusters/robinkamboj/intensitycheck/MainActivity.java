@@ -1,5 +1,6 @@
 package com.appbusters.robinkamboj.intensitycheck;
 
+import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -25,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private CardView intensityColor;
 
     private float max, perc;
-    private HashMap<String, String> colorTypes;
-    private String[] colors, colorHeaders;
+    private HashMap<String, Integer> colorTypes;
+    private String[] colorHeaders;
+    private Integer[] colors;
     private String CIC = "0/10"; //Current Intensity Color
 
     @Override
@@ -34,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        colors = getResources().getStringArray(R.array.intensity_shades);
+        colors = new Integer[]{R.color.colorIntensity1, R.color.colorIntensity2, R.color.colorIntensity3,
+                R.color.colorIntensity4, R.color.colorIntensity5, R.color.colorIntensity6,
+                R.color.colorIntensity7, R.color.colorIntensity8, R.color.colorIntensity9,
+                R.color.colorIntensity10};
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         colorHeaders = new String[]{"0/10", "11/20", "21/30", "31/40", "41/50", "51/60", "61/70", "71/80", "81/90", "91/100"};
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-
+                    intensityColor.setCardBackgroundColor(getResources().getColor(colorTypes.get(CIC)));
                 }
             });
         }
