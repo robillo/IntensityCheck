@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private float max, perc;
     private HashMap<String, String> colorTypes;
     private String[] colors, colorHeaders;
+    private String CIC = "0/10"; //Current Intensity Color
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
             String temp = String.format(Locale.getDefault(), "%.3g", perc*100);
             percentageIntensity.setText(temp);
             percentageMeter.setProgress(perc);
+
+            for(String tempString: colorTypes.keySet()){
+                if(CIC.equals(tempString)){
+                    CIC = tempString;
+                    return;
+                }
+            }
 
             Handler handler = new Handler();
             handler.post(new Runnable() {
