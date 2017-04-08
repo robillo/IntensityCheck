@@ -25,26 +25,20 @@ public class MainActivity extends AppCompatActivity {
     private CardView intensityColor;
 
     private float max, perc;
-    private HashMap<String, Integer> colorTypes;
+    private HashMap<String, String> colorTypes;
+    private String[] colors, colorHeaders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        colors = getResources().getStringArray(R.array.intensity_shades);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        colorHeaders = new String[]{"0/10", "11/20", "21/30", "31/40", "41/50", "51/60", "61/70", "71/80", "81/90", "91/100"};
         colorTypes = new HashMap<>();
-        colorTypes.put("0/10", R.color.colorIntensity1);
-        colorTypes.put("11/20", R.color.colorIntensity2);
-        colorTypes.put("21/30", R.color.colorIntensity3);
-        colorTypes.put("31/40", R.color.colorIntensity4);
-        colorTypes.put("41/50", R.color.colorIntensity5);
-        colorTypes.put("51/60", R.color.colorIntensity6);
-        colorTypes.put("61/70", R.color.colorIntensity7);
-        colorTypes.put("71/80", R.color.colorIntensity8);
-        colorTypes.put("81/90", R.color.colorIntensity9);
-        colorTypes.put("91/100", R.color.colorIntensity10);
+        addToColorTypes();
 
         currentIntensity = (TextView) findViewById(R.id.current);
         maxIntensity = (TextView) findViewById(R.id.maximum);
@@ -69,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
             percentageIntensity.setText(temp);
             percentageMeter.setProgress(perc);
 
-
             Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
@@ -84,4 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    private void addToColorTypes(){
+        for(int i=0; i<10; i++){
+            colorTypes.put( colorHeaders[i], colors[i]);
+        }
+    }
 }
