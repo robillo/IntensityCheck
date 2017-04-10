@@ -93,14 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 color = getResources().getColor(R.color.colorIntensity10);
             }
 
-            Log.e("HANDLER", " " + color);
-
             Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
                     intensityColor.setCardBackgroundColor(color);
-                    Log.e("COLOR", " " + color);
                 }
             });
         }
