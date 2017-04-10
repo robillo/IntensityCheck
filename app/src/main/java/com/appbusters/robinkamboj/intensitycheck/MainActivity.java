@@ -1,5 +1,6 @@
 package com.appbusters.robinkamboj.intensitycheck;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,6 +15,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yongjhih.mismeter.MisMeter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -23,11 +26,15 @@ public class MainActivity extends AppCompatActivity {
     private Sensor sensor;
     private SensorManager sensorManager;
     private MisMeter percentageMeter;
-    private TextView currentIntensity, maxIntensity, percentageIntensity, status;
+    private TextView currentIntensity, maxIntensity, percentageIntensity, status, userName;
     private CardView intensityColor;
 
     private float max, perc;
     private int color;
+
+    //Firebase Instance Variables
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,20 @@ public class MainActivity extends AppCompatActivity {
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        userName = (TextView) findViewById(R.id.user_name);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        if(firebaseUser == null){
+            //Not signed in, launch GoogleActivity
+            startActivity(new Intent(this, GoogleActivity.class));
+            finish();
+            return;
+        }
+        else {
+            userName.setText(firebaseUser.getDisplayName());
+        }
 
         currentIntensity = (TextView) findViewById(R.id.current);
         maxIntensity = (TextView) findViewById(R.id.maximum);

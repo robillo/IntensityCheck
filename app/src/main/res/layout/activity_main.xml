@@ -11,6 +11,18 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryLight">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="User Name"
+            android:paddingTop="5sp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorIntensity1"
+            android:id="@+id/user_name"
+            android:fontFamily="sans-serif-smallcaps"/>
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="100sp"
@@ -18,6 +30,7 @@
             android:layout_margin="5sp"
             app:cardElevation="3sp"
             android:id="@+id/color"
+            android:layout_below="@+id/user_name"
             app:cardBackgroundColor="@color/colorIntensity1">
 
         </android.support.v7.widget.CardView>
