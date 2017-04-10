@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFC107</color>
     <color name="colorPrimaryLight">#FFE082</color>
-    <color name="colorPrimaryDark">#FF6F00</color>
+    <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#00C853</color>
 
 
@@ -22,16 +22,4 @@
     <color name="colorIntensity9">#F5F5F5</color>
     <color name="colorIntensity10">#FAFAFA</color>
 
-    <array name="intensity_shades">
-        <item>@color/colorIntensity1</item>
-        <item>@color/colorIntensity2</item>
-        <item>@color/colorIntensity3</item>
-        <item>@color/colorIntensity4</item>
-        <item>@color/colorIntensity5</item>
-        <item>@color/colorIntensity6</item>
-        <item>@color/colorIntensity7</item>
-        <item>@color/colorIntensity8</item>
-        <item>@color/colorIntensity9</item>
-        <item>@color/colorIntensity10</item>
-    </array>
 </resources>
