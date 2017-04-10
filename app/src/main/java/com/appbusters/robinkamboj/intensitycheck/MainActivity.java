@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.CollapsibleActionView;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.github.yongjhih.mismeter.MisMeter;
@@ -26,25 +27,15 @@ public class MainActivity extends AppCompatActivity {
     private CardView intensityColor;
 
     private float max, perc;
-    private HashMap<String, Integer> colorTypes;
-    private String[] colorHeaders;
-    private Integer[] colors;
-    private String CIC = "0/10"; //Current Intensity Color
+    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        colors = new Integer[]{R.color.colorIntensity1, R.color.colorIntensity2, R.color.colorIntensity3,
-                R.color.colorIntensity4, R.color.colorIntensity5, R.color.colorIntensity6,
-                R.color.colorIntensity7, R.color.colorIntensity8, R.color.colorIntensity9,
-                R.color.colorIntensity10};
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-        colorHeaders = new String[]{"0/10", "11/20", "21/30", "31/40", "41/50", "51/60", "61/70", "71/80", "81/90", "91/100"};
-        colorTypes = new HashMap<>();
-        addToColorTypes();
 
         currentIntensity = (TextView) findViewById(R.id.current);
         maxIntensity = (TextView) findViewById(R.id.maximum);
@@ -69,18 +60,47 @@ public class MainActivity extends AppCompatActivity {
             percentageIntensity.setText(temp);
             percentageMeter.setProgress(perc);
 
-            for(String tempString: colorTypes.keySet()){
-                if(CIC.equals(tempString)){
-                    CIC = tempString;
-                    return;
-                }
+            float percDash = perc*100;
+
+            if(percDash<=10){
+                color = getResources().getColor(R.color.colorIntensity1);
             }
+            else if(percDash<=20){
+                color = getResources().getColor(R.color.colorIntensity2);
+            }
+            else if(percDash<=30){
+                color = getResources().getColor(R.color.colorIntensity3);
+            }
+            else if(percDash<=40){
+                color = getResources().getColor(R.color.colorIntensity4);
+            }
+            else if(percDash<=50){
+                color = getResources().getColor(R.color.colorIntensity5);
+            }
+            else if(percDash<=60){
+                color = getResources().getColor(R.color.colorIntensity6);
+            }
+            else if(percDash<=70){
+                color = getResources().getColor(R.color.colorIntensity7);
+            }
+            else if(percDash<=80){
+                color = getResources().getColor(R.color.colorIntensity8);
+            }
+            else if(percDash<=90){
+                color = getResources().getColor(R.color.colorIntensity9);
+            }
+            else if(percDash<=100){
+                color = getResources().getColor(R.color.colorIntensity10);
+            }
+
+            Log.e("HANDLER", " " + color);
 
             Handler handler = new Handler();
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    intensityColor.setCardBackgroundColor(getResources().getColor(colorTypes.get(CIC)));
+                    intensityColor.setCardBackgroundColor(color);
+                    Log.e("COLOR", " " + color);
                 }
             });
         }
@@ -90,10 +110,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
-
-    private void addToColorTypes(){
-        for(int i=0; i<10; i++){
-            colorTypes.put( colorHeaders[i], colors[i]);
-        }
-    }
 }
