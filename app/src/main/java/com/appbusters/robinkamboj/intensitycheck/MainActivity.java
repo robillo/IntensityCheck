@@ -12,8 +12,11 @@ import android.os.Bundle;
 import android.support.v7.view.CollapsibleActionView;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.yongjhih.mismeter.MisMeter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private Sensor sensor;
     private SensorManager sensorManager;
     private MisMeter percentageMeter;
-    private TextView currentIntensity, maxIntensity, percentageIntensity, status, userName;
+    private TextView currentIntensity, maxIntensity, percentageIntensity, status, userName, userEmail;
+    private ImageView userPhoto;
     private CardView intensityColor;
 
     private float max, perc;
     private int color;
+    private String photoUrl;
 
     //Firebase Instance Variables
     private FirebaseAuth firebaseAuth;
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
         userName = (TextView) findViewById(R.id.user_name);
+        userEmail = (TextView) findViewById(R.id.user_email);
+        userPhoto = (ImageView) findViewById(R.id.user_photo);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
@@ -56,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             userName.setText(firebaseUser.getDisplayName());
+            userEmail.setText(firebaseUser.getEmail());
+            if(firebaseUser.getPhotoUrl()!=null){
+                photoUrl = firebaseUser.getPhotoUrl().toString();
+                Glide.with(this)
+                        .load(photoUrl)
+                        .fitCenter()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(userPhoto);
+                Log.e("PHOTO URL", photoUrl);
+            }
         }
 
         currentIntensity = (TextView) findViewById(R.id.current);
